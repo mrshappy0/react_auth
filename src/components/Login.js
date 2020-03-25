@@ -7,8 +7,14 @@ export default class Login extends Component {
         password: ''
     }
 
+    componentDidMount(){
+        localStorage.removeItem('token')
+    }
+
     handleSubmit = (event) => {
         event.preventDefault()
+        this.props.login(this.state)
+        .then(() => this.props.history.push('/'))
     }
 
     handleChange = (event) => {
